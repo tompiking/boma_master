@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qingke.boma.mapper.TradeMapper">
+	<resultMap id="BaseResultMap" type="trade">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" />
+	</resultMap>
+	<!-- 查找所有行业 -->
+	<select id="getAllTrades" resultMap="BaseResultMap">
+		select * from trade
+	</select>
+	<!-- 根据行业名称查找行业 -->
+	<select id="getTradeByName" parameterType="trade" resultMap="BaseResultMap">
+		select * from trade where name = #{name}
+	</select>
+	<!-- 根据行业id查找行业 -->
+	<select id="getTradeById" parameterType="Integer" resultMap="BaseResultMap">
+		select * from trade where id = #{id}
+	</select>
+	<!-- 根据行业id更新行业信息 -->
+	<update id="update" parameterType="trade">
+		update trade set name =
+		#{name} where id = #{id}
+	</update>
+	<!-- 添加行业 -->
+	<insert id="insert" parameterType="trade">
+		insert into trade (name)
+		values (#{name})
+	</insert>
+	<!-- limitSelect -->
+	<select id="limitSelect" resultMap="BaseResultMap">
+		select * from trade where id
+		limit #{sId},#{eId}
+	</select>
+</mapper>

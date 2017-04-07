@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+.custom-combobox2 {
+	position: relative;
+	display: inline-block;
+}
+
+.custom-combobox-toggle2 {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin-left: -1px;
+	padding: 0;
+	/* 支持： IE7 */
+	*height: 1.7em;
+	*top: 0.1em;
+}
+
+.custom-combobox-input2 {
+	margin: 0;
+	padding: 0.3em;
+}

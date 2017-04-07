@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qingke.boma.mapper.RecommendMapper">
+	<resultMap id="BaseResultMap" type="recommend">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="isShow" property="isShow" />
+		<association property="person" column="person_id"
+			javaType="recommend" select="com.qingke.boma.mapper.PersonMapper.getPersonById" />
+		<association property="job" column="job_id" javaType="recommend"
+			select="com.qingke.boma.mapper.JobMapper.getJobById" />
+	</resultMap>
+
+	<sql id="query_recommend_update">
+		<if test="isShow!=null">
+			isShow = #{isShow},
+		</if>
+		<if test="person!=null">
+			person_id = #{person.id},
+		</if>
+		<if test="job!=null">
+			job_id = #{job.id},
+		</if>
+	</sql>
+	<!-- 查找所有的推荐表信息 -->
+	<select id="getAllRecommend" resultMap="BaseResultMap">
+		select * from recommend
+	</select>
+	<!-- 查找所有需要显示的推荐信息 -->
+	<select id="getIsShowRecommends" resultMap="BaseResultMap">
+		select * from
+		recommend where isShow = "y"
+	</select>
+	<!-- 根据推荐表id更新推荐表信息 -->
+	<update id="update" parameterType="recommend">
+		update recommend
+		<set>
+			<include refid="query_recommend_update" />
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 添加推荐表 -->
+	<insert id="insert" parameterType="recommend">
+		insert into recommend
+		(person_id, job_id, isShow)
+		values (#{person.id}, #{job.id}, #{isShow})
+	</insert>
+	<select id="getRecommendById" parameterType="int" resultMap="BaseResultMap">
+		select * from
+		recommend where id =#{id}
+	</select>
+	<delete id="deleteByRecommendId" parameterType="int">
+		delete from recommend where id = #{id}
+	</delete>
+	<select id="queryDatas" resultMap="BaseResultMap">
+		select * from recommend limit #{startIndex}, #{pagesize}
+	</select>
+	<select id="queryCount" resultType="int">
+		select count(*) from recommend
+	</select>
+</mapper>

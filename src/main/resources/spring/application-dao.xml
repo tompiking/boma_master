@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	<!-- 引入数据库文件 --> 
+	<context:property-placeholder location="classpath:connection.properties" />
+ 
+	<!-- 配置数据源,dbcp -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<!-- 最大连接数， 设置为0则为无限制 -->
+		<property name="maxActive" value="30"></property>
+		<!-- 最大空闲数， 数据库连接的最大空闲事件， 超过最大空闲数，数据库标为不可用, 并释放, 设置为0则为无限制 -->
+		<property name="maxIdle" value="5"></property>
+	</bean>
+
+	<!-- SqlSessionFactory 使用的是整合包的SqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 数据库连接池 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 加载myBatis的全局配置 -->
+		<property name="configLocation" value="classpath:myBatis/myBatis_config.xml"></property>
+	</bean>
+
+	<!-- mapper扫描器 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 扫描包路径， 如果需要扫描多个包路径， 使用半角逗号(英文输入法下的逗号)隔开 -->
+		<property name="basePackage" value="com.qingke.boma.mapper"></property>
+		<!-- 注意这里的name需要是sqlSessionFactoryBeanName 如果使用sqlSessionFactory将会导致加载db.properties不成功 -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+	</bean>
+	
+</beans>

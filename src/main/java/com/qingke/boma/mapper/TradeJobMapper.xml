@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qingke.boma.mapper.TradeJobMapper">
+	<resultMap id="BaseResultMap" type="tradeJob">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="isShow" property="isShow" />
+		<association property="trade" column="trade_id" javaType="tradeJob"
+			select="com.qingke.boma.mapper.TradeMapper.getTradeById" />
+		<association property="job" column="job_id" javaType="tradeJob"
+			select="com.qingke.boma.mapper.JobMapper.getJobById" />
+	</resultMap>
+
+	<sql id="query_tradeJob_update">
+		<if test="isShow!=null">
+			isShow = #{isShow},
+		</if>
+		<if test="trade!=null">
+			trade_id = #{trade.id},
+		</if>
+		<if test="job!=null">
+			job_id = #{job.id},
+		</if>
+	</sql>
+	<!-- 根据行业id查找该行业下的所有岗位 -->
+	<select id="getTradeJobs" parameterType="Integer" resultMap="BaseResultMap">
+		select * from trade_job where trade_id = #{id}
+	</select>
+	<!-- 根据行业id查找该行业下的所有展示的服务岗位 -->
+	<select id="getIsShowTradeJobs" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select * from trade_job where trade_id = #{id} and isShow =
+		"y"
+	</select>
+	<!-- 根据行业id查找该行业下的所有不展示的服务岗位 -->
+	<select id="getUnShowTradeJobs" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select * from trade_job where trade_id = #{id} and isShow =
+		"n"
+	</select>
+	<!-- 根据id更新行业内所拥有的岗位信息 -->
+	<update id="update" parameterType="tradeJob">
+		update trade_job
+		<set>
+			<include refid="query_tradeJob_update" />
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 添加行业所拥有的岗位 -->
+	<insert id="insert" parameterType="tradeJob">
+		insert into trade_job (isShow,
+		trade_id, job_id)
+		values (#{isShow}, #{trade.id}, #{job.id})
+	</insert>
+	<!-- 根据id找tradejob -->
+	<select id="getTradeJobById" parameterType="Integer" resultMap="BaseResultMap">
+		select * from trade_job where id= #{id}
+	</select>
+	<!-- 根据行业id查找该行业下的所有岗位 -->
+	<select id="getTradeJobByTwoIds" resultMap="BaseResultMap">
+		select * from
+		trade_job where trade_id = #{0} and job_id = #{1}
+	</select>
+	<!-- 查找所有isShow -->
+	<select id="getIsShow" resultMap="BaseResultMap">
+		select * from
+		trade_job where isShow='y'
+	</select>
+</mapper>

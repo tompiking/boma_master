@@ -1,0 +1,62 @@
+body {
+	text-align: center;
+}
+
+div {
+	margin: 0 auto;
+}
+
+table {
+	margin: 0 auto;
+	float:left;
+	padding-top: 30px;
+}
+
+table tr {
+	width:100%;
+}
+
+p {
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+
+a{
+	text-decoration: none;
+}
+
+#allRecruit {
+	margin-top: 50px;
+	width: 100%;
+	text-align: left;
+}
+
+.recruit_h2 {
+	text-align: left;
+}
+
+.recruit_h2:HOVER {
+	color: black;
+}
+
+.head_a {
+	color: white;
+}
+
+.head_a:HOVER,#bianji:HOVER {
+	color: red;
+}
+
+#bianji {
+	text-decoration: none;
+	float: left;
+	color: orange;
+}
+
+#topTitle {
+	width: 120px;
+	height:40px;
+	float: left;
+	background-color: #8dd834;
+}

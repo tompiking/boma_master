@@ -1,0 +1,19 @@
+ul {
+	list-style-type: none;
+}
+
+ul ul ul li {
+	display: inline-block;
+}
+
+hr#one {
+	height: 5px;
+	border: none;
+	border-top: 5px ridge green;
+}
+
+hr#two {
+	height: 2px;
+	border: none;
+	border-top: 2px dotted #185598;
+}

@@ -1,0 +1,135 @@
+html {
+	font-size: 100%;
+	height: 100%;
+	margin-bottom: 1px;
+	/* Always show a scrollbar to avoid jumping when the scrollbar appears  */
+}
+
+a {	
+	color: #57a000;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #000;
+}
+
+a:active {
+	color: #777;
+}
+
+a:focus {
+	outline: 1px;
+}
+/************ Table ************/
+#main-content table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#main-content table thead th {
+	font-weight: bold;
+	font-size: 15px;
+	border-bottom: 1px solid #ddd;
+}
+
+#main-content tbody {
+	border-bottom: 1px solid #ddd;
+}
+
+#main-content tbody tr {
+	background: #fff;
+}
+
+#main-content tbody tr.alt-row {
+	background: #f3f3f3;
+}
+
+#main-content table td, #main-content table th {
+	text-align:center;
+	padding: 10px;
+	line-height: 1.3em;
+}
+
+#main-content table tfoot td .bulk-actions {
+	text-align:center;
+	padding: 10px 0 5px 0;
+}
+
+#main-content table tfoot td .bulk-actions select {
+	padding: 4px;
+	border: 1px solid #ccc;
+}
+/*************** Pagination ***************/
+#main-content .pagination {
+	text-align: right;
+	padding: 20px 0 5px 0;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+.pagination a {
+	margin: 0 5px 0 0;
+	padding: 3px 6px;
+}
+
+.pagination a.number {
+	border: 1px solid #ddd;
+}
+
+.pagination a.number:hover {
+	background: #469400 url('/BoMa/img/imagesN/bg-button-green.gif') top
+		left repeat-x !important;
+	border-color: #459300 !important;
+	color: #fff !important;
+	text-decoration: underline
+}
+/* .pagination a.current {
+	background: #469400 url('/BoMa/img/imagesN/bg-button-green.gif') top
+		left repeat-x !important;
+	border-color: #459300 !important;
+	color: #fff !important;
+}
+
+.pagination a.current:hover {
+	text-decoration: underline;
+} */
+
+/************ Shortcut Buttons ************/
+.shortcut-button {
+	border: 1px solid #ccc;
+	background: #f7f7f7 url('/BoMa/img/imagesN/shortcut-button-bg.gif') top
+		left no-repeat;
+	display: block;
+	width: 120px;
+	margin: 0 0 20px 0;
+}
+
+.shortcut-button span {
+	border: 1px solid #fff;
+	display: block;
+	padding: 15px 10px 15px 10px;
+	text-align: center;
+	color: #555;
+	font-size: 13px;
+	line-height: 1.3em;
+}
+
+.shortcut-button span img {
+	margin-bottom: 10px;
+}
+
+.shortcut-button:hover {
+	background: #fff;
+}
+
+.shortcut-button span:hover {
+	color: #57a000;
+}
+
+ul.shortcut-buttons-set li {
+	float: left;
+	margin: 0 15px 0 0;
+	padding: 0 !important;
+	background: 0;
+}

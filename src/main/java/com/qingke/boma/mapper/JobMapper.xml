@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qingke.boma.mapper.JobMapper">
+	<resultMap id="BaseResultMap" type="job">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" />
+	</resultMap>
+	<!-- 通过岗位id查找岗位 -->
+	<select id="getJobById" parameterType="Integer" resultMap="BaseResultMap">
+		select * from job where id = #{id}
+	</select>
+	<!-- 通过id更新岗位信息 -->
+	<update id="update" parameterType="job">
+		update job set name = #{name}
+		where id = #{id}
+	</update>
+	<!-- 添加岗位信息 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="job">
+		insert into job (name) values (#{name})
+	</insert>
+	<!-- 查找所有的岗位 -->
+	<select id="getAllJobs" resultMap="BaseResultMap">
+		select * from job
+	</select>
+</mapper>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qingke.boma.mapper.RecruitMapper">
+	<resultMap id="BaseResultMap" type="recruit">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="description" property="description" />
+		<result column="requirement" property="requirement" />
+		<result column="salary" property="salary" />
+		<result column="address" property="address" />
+		<result column="title" property="title" />
+		<result column="isShow" property="isShow" />
+		<association property="company" column="company_id"
+			javaType="recruit" select="com.qingke.boma.mapper.CompanyMapper.getCompanyById" />
+	</resultMap>
+ 
+	<sql id="query_recruit_update">
+		<if test="description!=null">
+			description = #{description},
+		</if>
+		<if test="requirement!=null">
+			requirement = #{requirement},
+		</if>
+		<if test="salary!=null">
+			salary = #{salary},
+		</if>
+		<if test="address!=null">
+			address = #{address},
+		</if>
+		<if test="title!=null">
+			title = #{title},
+		</if>
+		<if test="company!=null">
+			company_id = #{company.id},
+		</if>
+		<if test="isShow!=null">
+			isShow = #{isShow},
+		</if>
+	</sql>
+	<!-- 根据id查找招聘信息 -->
+	<select id="getRecruitById" parameterType="Integer" resultMap="BaseResultMap">
+		select * from recruit where id = #{id}
+	</select>
+	<!-- 查找所有显示的招聘信息 -->
+	<select id="getAllRecruits" resultMap="BaseResultMap">
+		select * from recruit where isShow = "y"
+	</select>
+	<!-- 根据当前显示位置查找所有显示的招聘信息 -->
+	<select id="getIsShowRecruits" parameterType="page" resultMap="BaseResultMap">
+		select * from recruit
+		where isShow = "y" limit #{currentPosition},3
+	</select>
+	<!-- 根据id删除招聘信息 -->
+	<update id="deleteRecruit" parameterType="recruit">
+		update recruit
+		<set>
+			<include refid="query_recruit_update" />
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 根据id更新招聘信息 -->
+	<update id="update" parameterType="recruit">
+		update recruit
+		<set>
+			<include refid="query_recruit_update" />
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 添加招聘信息 -->
+	<insert id="insert" parameterType="recruit">
+		insert into recruit
+		(description, requirement, salary, address, title, company_id, isShow)
+		values
+		(#{description}, #{requirement}, #{salary}, #{address}, #{title},
+		#{company.id}, #{isShow})
+	</insert>
+
+</mapper>

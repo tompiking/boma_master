@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qingke.boma.mapper.CompanyMapper">
+	<resultMap id="BaseResultMap" type="company">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" />
+		<result column="description" property="description" />
+		<result column="isCase" property="isCase" />
+		<association property="logo" column="logo_id" javaType="company"
+			select="com.qingke.boma.mapper.LogoMapper.getLogoById" />
+		<association property="parentCompany" column="parentCompanyId"
+			javaType="company" select="com.qingke.boma.mapper.CompanyMapper.getCompanyById" />
+		<association property="trade" column="trade_id" javaType="company"
+			select="com.qingke.boma.mapper.TradeMapper.getTradeById" />
+	</resultMap>
+	<sql id="query_company_update">
+		<if test="name!=null">
+			name = #{name},
+		</if>
+		<if test="description!=null">
+			description = #{description},
+		</if>
+		<if test="trade!=null">
+			trade_id = #{trade.id},
+		</if>
+		<if test="isCase!=null">
+			isCase = #{isCase},
+		</if>
+		<if test="logo!=null">
+			logo_id = #{logo.id},
+		</if>
+		<if test="parentCompany!=null">
+			parentCompanyId = #{parentCompany.id},
+		</if>
+	</sql>
+	<!-- 获取所有成功案例公司 -->
+	<select id="getCaseCompanies" resultMap="BaseResultMap">
+		select * from company
+		where isCase = "y"
+	</select>
+	<!-- 根据id获取公司 -->
+	<select id="getCompanyById" parameterType="Integer" resultMap="BaseResultMap">
+		select * from company where id = #{id}
+	</select>
+	<!-- 根据行业获取非成功案例公司 -->
+	<select id="getUnCaseCompanyByTrade" parameterType="trade"
+		resultMap="BaseResultMap">
+		select * from company where trade_id = #{id} and isCase =
+		"n"
+	</select>
+	<!-- 获取所有某行业的成功案例的公司 -->
+	<select id="getCaseCompanyByTrade" parameterType="trade"
+		resultMap="BaseResultMap">
+		select * from company where trade_id = #{id} and isCase =
+		"y"
+	</select>
+	<!-- 根据公司名称获取公司 -->
+	<select id="getCompanyByName" parameterType="String" resultMap="BaseResultMap">
+		select * from company where name = #{name}
+	</select>
+	<!-- 通过id更新公司信息 -->
+	<update id="update" parameterType="company">
+		update company
+		<set>
+			<include refid="query_company_update" />
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 添加公司信息 -->
+	<insert id="insert" parameterType="company" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into company (
+		name,
+		description,
+		trade_id,
+		isCase,
+		logo_id,
+		parentCompanyId)
+		values
+		(#{name},
+		#{description},
+		#{trade.id},
+		#{isCase},
+		#{logo.id},
+		#{parentCompany.id})
+	</insert>
+	<!-- 获取所有公司 (改) -->
+	<select id="getCompanies" resultMap="BaseResultMap">
+		select * from company
+	</select>
+
+	<!-- 根据公司ID删除公司(add by yyh) -->
+	<!-- <delete id="deleteCompanyById" parameterType="id"> delete from company 
+		where id = #{id, jdbcType=INTEGER} </delete> -->
+
+	<!-- 获取所有公司(分页) -->
+	<select id="getCompaniesByPage" parameterType="Map" resultMap="BaseResultMap">
+		select *
+		from
+		company limit #{index, jdbcType=INTEGER},#{offSet,
+		jdbcType=INTEGER}
+	</select>
+
+	<!-- 获取公司信息的总条数 -->
+	<select id="countAllCompanies" resultType="INTEGER">
+		select count(*) from company
+	</select>
+</mapper>

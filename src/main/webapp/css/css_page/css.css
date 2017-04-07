@@ -1,0 +1,91 @@
+/* www.jq22.com */
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+	}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+p {
+	padding: 0 20px;
+	margin: 10px 0;
+	line-height: 1.5;
+}
+
+p.spacer {
+	margin-bottom: 20px;
+}
+
+p.heading {
+	font-size: 18px;
+}
+
+p.top-links {
+	text-align: right;
+	padding-right: 0;
+}
+
+.content {
+	overflow: hidden;
+	width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.block {
+	background: rgba(0,0,0,0.1);
+	border-radius: 5px;
+	padding: 20px;
+	margin-bottom: 30px;
+	background: none repeat scroll 0 0 #FFFFFF;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+	position: relative;
+}
+.block:before,
+.block:after {
+	content:"";
+	position:absolute;
+	z-index:-2;
+}
+.block:before {
+	box-shadow:0 0 15px rgba(0,0,0,0.6);
+	top:50%;
+	bottom:0;
+	left:10px;
+	right:10px;
+	border-radius:100px / 10px;
+}
+
+.pagination-holder {
+	padding: 0 20px;
+	margin: 10px 0 20px 0;
+	margin-bottom: 20px;
+}
+
+.pagination-holder.black {
+	padding: 20px 20px 15px 20px;
+	background: #444;
+	border: 1px solid #333;
+	border-radius: 2px;
+}
+
+table {
+	margin: 0 20px 30px;
+}
+
+table td {
+	padding: 10px 30px 10px 0;
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+	vertical-align: top;
+	border-bottom: 1px dotted #CCC;
+	line-height: 1.5;
+}
+
+table tr td:last-child {
+	padding-right: 0;
+}

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qingke.boma.mapper.ManagerMapper">
+	<resultMap id="BaseResultMap" type="manager">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" />
+		<result column="showname" property="showName" />
+		<result column="job" property="job" />
+		<result column="comment" property="comment" />
+		<result column="isPraise" property="isPraise" />
+		<association property="company" column="company_id"
+			javaType="manager" select="com.qingke.boma.mapper.CompanyMapper.getCompanyById" />
+	</resultMap>
+
+	<sql id="query_manager_update">
+		<if test="name!=null">
+			name = #{name},
+		</if>
+		<if test="showName!=null">
+			showname = #{showName},
+		</if>
+		<if test="job!=null">
+			job = #{job},
+		</if>
+		<if test="comment!=null">
+			comment = #{comment},
+		</if>
+		<if test="isPraise!=null || isPraise ==''">
+			isPraise=#{isPraise},
+		</if>
+		<if test="company!=null">
+			company_id = #{company.id},
+		</if>
+	</sql>
+	<!-- 通过公司id获取负责人信息 -->
+	<select id="getManagerByCompanyId" parameterType="Integer"
+		resultMap="BaseResultMap">
+		select * from manager where company_id = #{id}
+	</select>
+	<!-- 获取所有负责人信息 -->
+	<select id="getAllManagers" resultMap="BaseResultMap">
+		select * from manager
+	</select>
+	<!-- 通过id更新负责人信息 -->
+	<update id="update" parameterType="manager">
+		update manager
+		<set>
+			<include refid="query_manager_update" />
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 添加公司负责人 -->
+	<insert id="insert" parameterType="manager">
+		insert into manager (name,
+		showname, job, comment, company_id, isPraise)
+		values (#{name},
+		#{showName},
+		#{job}, #{comment}, #{company.id}, #{isPraise})
+	</insert>
+
+	<!-- 根据ID获取负责人 -->
+	<select id="getManagerById" parameterType="Integer" resultMap="BaseResultMap">
+		select * from manager where id = #{id}
+	</select>
+	<!-- 根据公司ID删除负责人add by yyh -->
+	<!-- <delete id="deleteManagersByCompanyId" parameterType="id"> delete from 
+		manager where company_id = #{id, jdbcType=INTEGER} </delete> -->
+
+	<!-- 获取所有是口碑印证的负责人(分页) -->
+	<select id="getAllManagersByPage" parameterType="Map" resultMap="BaseResultMap">
+		select * from manager where isPraise = "y" limit #{index,
+		jdbcType=INTEGER},#{offset, jdbcType=INTEGER}
+	</select>
+	<!-- 获取所有是口碑印证的负责人的总个数 -->
+	<select id="countIsPraise" resultType="INTEGER">
+		select count(*) from
+		manager where isPraise="y"
+	</select>
+
+	<!-- 获取所有不是口碑印证的负责人(分页) -->
+	<select id="getAllManagerNotByPage" parameterType="Map"
+		resultMap="BaseResultMap">
+		select * from manager where isPraise = "n" limit #{index,
+		jdbcType=INTEGER},#{offset, jdbcType=INTEGER}
+	</select>
+	<!-- 获取所有不是口碑印证的负责人的总个数 -->
+	<select id="countNotPraise" resultType="Integer">
+		select count(*) from
+		manager where isPraise="n"
+	</select>
+</mapper>
