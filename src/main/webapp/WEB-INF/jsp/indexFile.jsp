@@ -35,21 +35,21 @@
 					<!-- Accordion Menu -->
 					<li><a id="main" href="javascript:void(0);"
 						class="nav-top-item current" onclick="changeColor('#main')"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
-							主页面
+							企业管理
 					</a>
 						<ul>
-							<li><a
-								href="${pageContext.request.contextPath }/company/showAllCompanies"
-								class="current" target="_myblank">公司总览</a></li>
-							<li><a
-								href="${pageContext.request.contextPath }/trade/addTrade"
-								target="_myblank">添加行业</a></li>
+							<li>
+								<a class="current" target="_myblank" href="${pageContext.request.contextPath }/company/showAllCompanies">企业列表</a>
+							</li>
+							<li>
+								<a href="${pageContext.request.contextPath }/trade/addTrade" target="_myblank">添加行业</a>
+							</li>
+							<li>
+								<a href="${pageContext.request.contextPath }/case/insert" target="_myblank">添加岗位</a>
+							</li>
 							<li><a
 								href="${pageContext.request.contextPath }/company/addCompany"
-								target="_myblank">添加公司</a></li>
-							<li><a
-								href="${pageContext.request.contextPath }/case/insert"
-								target="_myblank">添加岗位</a></li>
+								target="_myblank">添加企业</a></li>
 						</ul></li>
 					<li><a id="parise" href="javascript:void(0);"
 						class="nav-top-item" onclick="changeColor('#parise')"> <!-- Add the class "current" to current menu item -->
@@ -58,54 +58,54 @@
 						<ul>
 							<li><a
 								href="${pageContext.request.contextPath}/manager/getManagerIsPraise "
-								target="_myblank">已显示的口碑印证</a></li>
+								target="_myblank">口碑列表</a></li>
 							<!-- Add class "current" to sub menu items also -->
 							<li><a
 								href="${pageContext.request.contextPath}/manager/addShowPraise"
-								target="_myblank">添加显示口碑印证</a></li>
+								target="_myblank">显示口碑</a></li>
 							<li><a
 								href="${pageContext.request.contextPath }/manager/addManager"
-								target="_myblank">添加负责人</a></li>
+								target="_myblank">添加口碑</a></li>
 						</ul></li>
 					<li><a id="case" href="#" class="nav-top-item"
 						onclick="changeColor('#case')"> 成功案例 </a>
 						<ul>
 							<li><a
 								href="${pageContext.request.contextPath}/case/select"
-								target="_myblank">显示的成功页面</a></li>
+								target="_myblank">案例列表</a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/case/select_admin"
-								target="_myblank">修改成功案例</a></li>
+								target="_myblank">修改案例</a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/case/add"
-								target="_myblank">添加成功案例</a></li>
+								target="_myblank">添加案例</a></li>
 						</ul></li>
 					<li><a id="recruit" href="#" class="nav-top-item"
 						onclick="changeColor('#recruit')"> 伯企业 </a>
 						<ul>
 							<li><a
 								href="${pageContext.request.contextPath }/recruit/showIsShowRecruit"
-								target="_myblank">已显示的招聘信息</a></li>
+								target="_myblank">招聘列表</a></li>
 							<li><a
 								href="${pageContext.request.contextPath }/company/getAllCompanies"
-								target="_myblank">新增招聘信息</a></li>
+								target="_myblank">添加招聘信息</a></li>
 						</ul></li>
 					<li><a id="people" href="#" class="nav-top-item"
 						onclick="changeColor('#people')"> 伯人才 </a>
 						<ul>
 							<li><a
 								href="${pageContext.request.contextPath}/recommend/listAll"
-								target="_myblank">显示推荐信息</a></li>
+								target="_myblank">推荐列表</a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/recommend/add"
-								target="_myblank">添加推荐信息</a></li>
+								target="_myblank">添加推荐</a></li>
 							<li><a href="${pageContext.request.contextPath}/person/list"
-								target="_myblank">显示被推荐人信息</a></li>
+								target="_myblank">人才列表</a></li>
 							<li><a href="${pageContext.request.contextPath}/person/add"
-								target="_myblank">添加被推荐人信息</a></li>
+								target="_myblank">添加人才</a></li>
 						</ul></li>
 					<li><a id="other" href="#" class="nav-top-item"
-						onclick="changeColor('#other')"> 其他 </a>
+						onclick="changeColor('#other')"> 用户管理 </a>
 						<ul>
 							<li><a
 								href="${pageContext.request.contextPath }/admin/toUpdatePassword"

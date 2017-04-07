@@ -12,25 +12,20 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginInterceptor implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
+		//请求URL
 		String path = request.getRequestURI();
-		System.out.println("[DEBUG接收到请求路径: " + path);
-		
 		String relativePath = path.substring(path.lastIndexOf("/")+1);
-		System.out.println(relativePath);
+		//login请求
 		if ("login".equals(relativePath)) {
-			System.out.println("[DEBUG]请求的登录页面");
 			return true;
 		}
-
 		HttpSession session = request.getSession();
-		
+		//已登录
 		if (session.getAttribute("user") != null) {
-			System.out.println("[DEBUG]用户已经登录");
 			return true;
 		}
-		System.out.println("[DEBUG]跳转回登录页面");
+		//未登录
 		request.setAttribute("msg", "请先登录操作!!");
-		/*request.getRequestDispatcher("/WEB-INF/jsp/admin/Login.jsp").include(request, response);*/
 		request.getRequestDispatcher("/Login.jsp").forward(request, response);
 		return false;
 	}
