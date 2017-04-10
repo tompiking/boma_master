@@ -28,7 +28,7 @@
 				<!-- Sidebar Profile links -->
 				<div id="profile-links">
 					欢迎您管理员, <a href="${pageContext.request.contextPath }/admin/toUpdatePassword" title="Edit your profile" target="_myblank">${user.name }</a> <br />
-					<a href="${pageContext.request.contextPath }/admin/signOut" title="Sign Out">Sign Out</a>
+					<a href="${pageContext.request.contextPath }/admin/signOut" title="退出登录">注销</a>
 				</div>
 
 				<ul id="main-nav">

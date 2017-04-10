@@ -1,4 +1,3 @@
 .git/
-src/main/resources/connection.properties
 target/
 /bin/
