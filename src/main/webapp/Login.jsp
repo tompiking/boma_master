@@ -20,12 +20,12 @@ body {
 <body onload="loadTopWindow();">
 	<div class="wrapper">
 		<div class="container">
-			<h1>Welcome</h1>
+			<h1>欢迎使用</h1>
 			<form class="form">
 				<span id="msg">${not empty msg?msg:"" }</span> <input id="userName"
-					type="text" placeholder="Username"> <input id="psd"
-					type="password" placeholder="Password">
-				<button type="button" id="login-button">Login</button>
+					type="text" placeholder="用户名"> <input id="psd"
+					type="password" placeholder="密码">
+				<button type="button" id="login-button">登录</button>
 			</form>
 		</div>
 		<ul class="bg-bubbles">
