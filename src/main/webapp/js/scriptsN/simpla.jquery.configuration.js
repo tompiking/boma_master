@@ -19,7 +19,7 @@ $(document).ready(function(){
 				window.location.href=(this.href); // Just open the link instead of a sub menu
 				return false;
 			}
-		); 
+		);
 
     // Sidebar Accordion Menu Hover Effect:
 		
@@ -95,7 +95,10 @@ $(document).ready(function(){
 		//$(".wysiwyg").wysiwyg(); // Applies WYSIWYG editor to any textarea with the class "wysiwyg"
 		
 		currentIndex = $("#main");
-		
+		$("#sidebar #main-nav ul li a").click(function(){
+			$("#sidebar #main-nav ul li a").attr("class","");
+			$(this).attr("class","current");
+		});
 });
 function changeColor(id) {
 	currentIndex.removeClass("current");
