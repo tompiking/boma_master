@@ -2,8 +2,8 @@
 <<<<<<<=HEAD
 >>>>>>>=efb2b6fde466cad555d5fcf7d5c65a221e19e0da
 eclipse.preferences.version=1
+encoding//db_sql/boma_sql.sql=UTF-8
 encoding//src/main/java/com/qingke/boma/controller/PersonController.java=UTF-8
 encoding//src/main/java/com/qingke/boma/interceptor/LoginInterceptor.java=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/admin_jsp/addAdmin.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/admin_jsp/updatePassword.jsp=UTF-8
-encoding/<project>=UTF-8
