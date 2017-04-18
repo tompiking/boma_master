@@ -27,6 +27,10 @@
 		insert into trade (name)
 		values (#{name})
 	</insert>
+	<delete id="dropTrade" parameterType="trade">
+		delete from trade 
+		where id = #{id}
+	</delete>
 	<!-- limitSelect -->
 	<select id="limitSelect" resultMap="BaseResultMap">
 		select * from trade where id
