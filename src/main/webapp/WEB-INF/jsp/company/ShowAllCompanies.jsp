@@ -30,6 +30,11 @@
 	<div id="body-wrapper">
 		<div id="main-content">
 			<p id="page-intro">当前位置:>>公司总览</p>
+			<div>
+				<p id="page-intro">
+					<a class="page-link" href="${pageContext.request.contextPath }/company/addCompany" target="_myblank">添加企业</a>
+				</p>
+			</div>
 			<div class="content-box">
 				<table>
 					<thead>

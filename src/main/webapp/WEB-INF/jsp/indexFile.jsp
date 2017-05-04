@@ -35,21 +35,18 @@
 					<!-- Accordion Menu -->
 					<li><a id="main" href="javascript:void(0);"
 						class="nav-top-item current" onclick="changeColor('#main')"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
-							企业管理
+							基础配置
 					</a>
 						<ul>
 							<li>
-								<a class="current" target="_myblank" href="${pageContext.request.contextPath }/company/showAllCompanies">企业列表</a>
+								<a class="current" target="_myblank" href="${pageContext.request.contextPath }/company/showAllCompanies">企业管理</a>
 							</li>
 							<li>
-								<a href="${pageContext.request.contextPath }/trade/addTrade" target="_myblank">添加行业</a>
+								<a href="${pageContext.request.contextPath }/trade/addTrade" target="_myblank">行业管理</a>
 							</li>
 							<li>
-								<a href="${pageContext.request.contextPath }/case/insert" target="_myblank">添加岗位</a>
+								<a href="${pageContext.request.contextPath }/case/insert" target="_myblank">岗位管理</a>
 							</li>
-							<li><a
-								href="${pageContext.request.contextPath }/company/addCompany"
-								target="_myblank">添加企业</a></li>
 						</ul></li>
 					<li><a id="parise" href="javascript:void(0);"
 						class="nav-top-item" onclick="changeColor('#parise')"> <!-- Add the class "current" to current menu item -->

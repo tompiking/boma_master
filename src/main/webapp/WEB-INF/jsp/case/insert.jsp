@@ -38,17 +38,17 @@
 				</td>
 				<td><select id="otherjob" class="combobox2">
 						<option value="0">请选择</option>
-				</select><br />
-				<td style="text-align: right">
-					<button id="selectadd" class="submit" type="button">提交</button>
-				</td>
+				</select>
 			</tr>
 			<tr>
 				<td><span style="color: gray; font-size: 20px">或自己添加：</span></td>
 				<td><input type="text" id="inputjob" placeholder="请输入岗位名称">
 				</td>
-				<td style="text-align: right"><button id="inputadd"
-						class="submit" type="button">提交</button></td>
+			</tr>
+			<tr>
+				<td style="text-align: left">
+					<button id="selectadd" class="submit" type="button">提交</button>
+				</td>
 			</tr>
 		</table>
 
