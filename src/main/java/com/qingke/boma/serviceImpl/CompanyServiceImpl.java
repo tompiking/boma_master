@@ -32,8 +32,8 @@ public class CompanyServiceImpl implements CompanyService{
 	// 更新公司信息
 	@Override
 	public int update(Company t) {
-		if(t.getLogo() != null) 
-			logoMapper.insert(t.getLogo());
+//		if(t.getLogo() != null) 
+//			logoMapper.insert(t.getLogo());
 		return companyMapper.update(t);
 	}
 	// 获取所有公司

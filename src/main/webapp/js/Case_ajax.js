@@ -90,7 +90,7 @@ function addCompany(id) {
 		data : params,
 		success : function(data) {
 			if ("true" == data.result) {
-				alert("添加成功");
+				alert("添加服务企业成功");
 				deleteP.remove();
 				$(".custom-combobox-input5").val("请选择");
 			} else {
@@ -109,7 +109,7 @@ function addJob(id) {
 		data : params,
 		success : function(data) {
 			if ("true" == data.result) {
-				alert("添加成功");
+				alert("添加服务岗位成功");
 				deleteP.remove();
 				$(".custom-combobox-input4").val("请选择");
 			} else {
